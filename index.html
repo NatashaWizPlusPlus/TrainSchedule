@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./assets/style.css"></link>
+	<!-- Latest compiled and minified CSS -->
+<!--   <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script> -->
+
+</head>
+<body>
+<div class="container">
+              <div class="jumbotron jumbotron-black">
+                <h1 class="h1-color">The 100 Miles an hour Train</h1>
+                <p>A Comprehensive Directory into the brain of the millenial</p>
+              </div>
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">Brain Train Schedule</div>
+        <div class="table-responsive">
+             <table class="table">
+                   <th>
+                    <td>Train Name</td>
+                    <td>Destination</td>
+                    <td>Frequency (min)</td>
+                    <td>Next Arrival</td>
+                  </th>
+              
+              <tbody id="t-bod">
+
+              </tbody>
+              
+          </div>
+            </table>
+      </div>
+
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading panel-margin">Add Train of Thought</div>
+  <form class="form-horizontal">
+  
+  <div class="form-group">
+    <label for="trainName" class="col-sm-2 control-label">Train Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="trainName1">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="destination" class="col-sm-2 control-label">Destination</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="destination1">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="firstTrain" class="col-sm-2 control-label">First train of thought (HH:MM - military time)</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="firstTrain1">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="frequency" class="col-sm-2 control-label">Frequency of Thought (min)</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="frequency1">
+    </div>
+  </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-primary" id="add-train">Submit</button>
+          </div>
+        </div>
+</form>
+</div>
+
+<!-- Init all scipts url's -->
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script src="https://momentjs.com/downloads/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+
+  <!-- Start Script for Firebase -->
+  <script>
+
+    // Initialize Firebase
+    
+    var config = {
+    apiKey: "AIzaSyAYFLHayNYpdrSU0JFrR9R9fSGTPn90F30",
+    authDomain: "train-schedule-4c8e6.firebaseapp.com",
+    databaseURL: "https://train-schedule-4c8e6.firebaseio.com",
+    projectId: "train-schedule-4c8e6",
+    storageBucket: "train-schedule-4c8e6.appspot.com",
+    messagingSenderId: "85211404932"
+  };
+  firebase.initializeApp(config);
+
+    var db = firebase.database()
+
+    //Don't forget to set initial values
+    
+    var name = "";
+    var destination = "";
+    var firstTrain = parseInt($("#firstTrain1").val());
+    var frequency = parseInt($("#frequency1").val());
+
+    //Capture the button click
+    
+    $("#add-train").on("click", function(event){
+    	event.preventDefault();
+
+	    //Grab the values from the text boxes
+	    
+      name = $("#trainName1").val().trim();
+	    destination = $("#destination1").val().trim();
+	    firstTrain = $("#firstTrain1").val().trim();
+	    frequency = $("#frequency1").val().trim();
+
+
+	    //Now we push the data to the database
+	    db.ref().push({
+	    	name:name,
+	    	destination:destination,
+	    	firstTrain:firstTrain,
+	    	frequency:frequency
+
+    	});
+
+       //We need to calculate when the next train will arrive based on first Train time + frequency of the train and loop this to calculate when the next train arrives. This info we grab from the database and push to the tables.
+
+        var nextTrain = firstTrain1 + frequency1;
+        
+
+       //Now apply all the results to their matching td cell
+      
+
+	});	
+
+</script>
+
+</body>
+</html>

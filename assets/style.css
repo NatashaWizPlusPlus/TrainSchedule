@@ -1,0 +1,15 @@
+.jumbotron-black{
+	background-color: #337ab7;
+	color: white;
+	text-align: center;
+}
+
+.bold{
+	font-weight: bold;
+	line-height: 50px;
+	text-align: center;
+}
+
+.panel-margin{
+	margin-bottom:10px;
+}
