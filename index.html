@@ -28,7 +28,7 @@
                     <td>Train Name</td>
                     <td>Destination</td>
                     <td>Frequency (min)</td>
-                    <td>Next Arrival</td>
+                    <td id="arrival">Next Arrival</td>
                   </th>
               
               <tbody id="t-bod">
@@ -132,11 +132,14 @@
 	    	firstTrain:firstTrain,
 	    	frequency:frequency
 
+         //We need to calculate when the next train will arrive based on first Train time + frequency of the train and loop this to calculate when the next train arrives. This info we grab from the database and push to the tables.
+
+        // var nextTrain = $("#firstTrain1").val() + $("#frequency1").val();
+        // $("#arrival").val(nextTrain);
+
     	});
 
-       //We need to calculate when the next train will arrive based on first Train time + frequency of the train and loop this to calculate when the next train arrives. This info we grab from the database and push to the tables.
-
-        var nextTrain = firstTrain1 + frequency1;
+      
         
 
        //Now apply all the results to their matching td cell
