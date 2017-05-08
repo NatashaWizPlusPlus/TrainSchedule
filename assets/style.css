@@ -1,8 +1,24 @@
+/*body{
+  background-size: cover;
+  background: transparent;
+}*/
+
+html,body{
+	
+	height:100%
+	background-size: cover;
+  	background: transparent;
+  	background-image: url("../assets/images/train-tracks-bg.jpg");
+}
+
+
 .jumbotron-black{
-	background-color: #337ab7;
+	background-color: orange;
 	color: white;
 	text-align: center;
+	opacity: 0.6;
 }
+
 
 .bold{
 	font-weight: bold;
@@ -10,6 +26,40 @@
 	text-align: center;
 }
 
+.panel-primary .panel-heading{
+	color: white;
+	background-color: orange;
+	opacity: 0.9;
+}
+
 .panel-margin{
 	margin-bottom:10px;
 }
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+	opacity: 0.8;
+    border: 0px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+
+ }
+
+ .col-sm-10{
+ 	width: 800px;
+ }
+ 
+ .btn-primary {
+    color: #fff;
+    background-color: orange;
+    border-color: white;
+    width: 200px;
+    height: 60px;
+    align-content: center;
+
+    margin-top: 30px;
+    margin-bottom: 30px;
+}   
+
