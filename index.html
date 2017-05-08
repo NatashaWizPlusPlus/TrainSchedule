@@ -110,7 +110,7 @@
     var name = "";
     var destination = "";
     var firstTrain = parseInt($("#firstTrain1").val());
-    var frequency = parseInt($("#frequency1").val());
+    var frequency = parseInt($("#firstTrain1" + "#frequency1").val());
 
     //Capture the button click
     
@@ -133,36 +133,25 @@
 	    	frequency:frequency
 
          //We need to calculate when the next train will arrive based on first Train time + frequency of the train and loop this to calculate when the next train arrives. This info we grab from the database and push to the tables.
-        // db.ref("/train-schedule").on("child_added", function(snapshot) {
-
-        //   var trainData = snapshot.val();
-        //   console.log(JSON.stringify(trainData));
-
-        //   addRow(trainData.trainName, trainData.destination, trainData.frequency, trainData.nextArrival, trainData.minutesAway);
-
-        // }, function(errorObject) {
-        //   console.log(JSON.stringify(errorObject));
-        // });
 
     	});
 
-//Here is where we append it to the HTML
-db.ref().once('child_added', function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
+          //Here is where we append it to the HTML
+          db.ref().once('child_added', function(snapshot) {
+              snapshot.forEach(function(childSnapshot) {
 
-      var childKey = childSnapshot.key;
-      var childData = childSnapshot.val();
+                      var childKey = childSnapshot.key;
+                      var childData = childSnapshot.val();
 
-      console.log(childKey + " - " + childData); // Displays key with its value in your Browser Console
+                      console.log(childKey + " - " + childData); // Displays key with its value in your Browser Console
 
-      //Now apply all the results to their matching td cell
+                      //Now apply all the results to their matching td cell
 
+                      // $('#table-output').append('<th>' + childKey + '</th>');
+                      $('#table-output').append('<td>' + childData +  '</td>');
 
-      // $('#keysRow').append('<th>' + childKey + '</th>');
-      $('#table-output').append('<th>' + childData) + '</th>';
-
-    });
-  });
+                });
+          });
        
       
 
